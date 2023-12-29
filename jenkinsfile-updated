@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+
+tools {
+jdk 'java'
+maven 'maven'
+}
+
+stages {
+    stage('Git clone'){
+        steps {
+        git branch: 'main',
+        url: 'https://github.com/Prudhvitej9/helloworld-project-2.git'
+
+        }
+    }
+    stage('Maven build'){
+        steps {
+        sh 'mvn clean install'
+
+        }
+    }
+  }
+
+}
